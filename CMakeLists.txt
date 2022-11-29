@@ -25,12 +25,14 @@ set(Functions ${AbstractFunction} ${ConstantFunction} ${IdenticalFunction} ${Pow
 
 set(Factory src/Factory/FunctionFactory.h src/Factory/FunctionFactory.cpp)
 
-add_library(fields_of_gold_lib ${Functions} ${Factory})
+set(GradientDescent src/GradientDescent.h src/GradientDescent.cpp)
+
+add_library(fields_of_gold_lib ${Functions} ${Factory} ${GradientDescent})
 
 add_executable(fields_of_gold main.cpp)
 target_link_libraries(fields_of_gold fields_of_gold_lib)
 
-add_executable(tests test/Functions_test.cpp test/Operators_test.cpp)
+add_executable(tests test/Functions_test.cpp test/Operators_test.cpp test/GradientDescent_test.cpp)
 target_link_libraries(tests fields_of_gold_lib)
 target_link_libraries(tests gtest_main)
 add_test(NAME tests COMMAND tests)
