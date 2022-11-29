@@ -9,7 +9,7 @@
 #include "Functions/AbstractFunction/AbstractFunction.h"
 #include "Factory/FunctionFactory.h"
 
-constexpr numeric_type delta = 0.1;
+constexpr numeric_type delta = 0.001;
 
 numeric_type solve(AbstractFunctionPtr function, numeric_type x_0, int iterations, numeric_type lambda);
 

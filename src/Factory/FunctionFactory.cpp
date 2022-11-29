@@ -2,8 +2,6 @@
  * @author sanyavertolet
  */
 
-#include <map>
-
 #include "FunctionFactory.h"
 
 AbstractFunctionPtr FunctionFactory::create(const std::string &function_type, std::initializer_list<numeric_type> parameters) {

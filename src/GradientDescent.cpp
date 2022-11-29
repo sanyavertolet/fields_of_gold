@@ -3,6 +3,7 @@
  */
 
 #include "GradientDescent.h"
+#include "Functions/AbstractFunction/AbstractFunction.h"
 #include "Functions/Operators/operators.h"
 
 numeric_type gradient(AbstractFunctionPtr function, numeric_type x) {

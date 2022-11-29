@@ -5,6 +5,7 @@
 #ifndef FIELDS_OF_GOLD_COMPOSITIONFUNCTION_H
 #define FIELDS_OF_GOLD_COMPOSITIONFUNCTION_H
 
+#include <functional>
 #include <initializer_list>
 #include <map>
 #include <string>
