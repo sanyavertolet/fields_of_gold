@@ -22,14 +22,23 @@ class FunctionFactory {
 public:
     using constructor_function_type = std::function<AbstractFunctionPtr(const std::string&, std::initializer_list<numeric_type>)>;
 
-    FunctionFactory() = default;
+    static FunctionFactory& get();
 
-    AbstractFunctionPtr create(const std::string &function_type, std::initializer_list<numeric_type> parameters);
-    void add(AbstractFunctionPtr function);
     [[nodiscard]] size_t size() const;
 
-    ~FunctionFactory();
+    AbstractFunctionPtr create(const std::string &function_type, std::initializer_list<numeric_type> parameters);
+
+    void add(AbstractFunctionPtr function);
+    void clear();
+
 private:
+    FunctionFactory() = default;
+    FunctionFactory(FunctionFactory const&) = default;
+    FunctionFactory(FunctionFactory&&) = default;
+    FunctionFactory& operator=(FunctionFactory const&) = default;
+    FunctionFactory& operator=(FunctionFactory&&) = default;
+    ~FunctionFactory();
+
     std::vector<AbstractFunctionPtr> functions;
     static std::map<std::string, constructor_function_type> function_constructors;
 };

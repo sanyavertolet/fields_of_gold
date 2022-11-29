@@ -46,3 +46,15 @@ FunctionFactory::~FunctionFactory() {
 size_t FunctionFactory::size() const {
     return functions.size();
 }
+
+FunctionFactory& FunctionFactory::get() {
+    static FunctionFactory factory;
+    return factory;
+}
+
+void FunctionFactory::clear() {
+    for (auto &function : functions) {
+        delete function;
+    }
+    functions = {};
+}

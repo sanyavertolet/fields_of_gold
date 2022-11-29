@@ -11,7 +11,8 @@
 class Functions_test : public testing::Test { };
 
 TEST(Functions_test, constant_function_test) {
-    auto factory = FunctionFactory();
+    auto &factory = FunctionFactory::get();
+    factory.clear();
     ASSERT_EQ(factory.size(), 0);
     auto const_function = factory.create("const", { 1 } );
     ASSERT_EQ(factory.size(), 1);
@@ -37,7 +38,8 @@ TEST(Functions_test, constant_function_test) {
 }
 
 TEST(Functions_test, identical_function_test) {
-    auto factory = FunctionFactory();
+    auto &factory = FunctionFactory::get();
+    factory.clear();
     ASSERT_EQ(factory.size(), 0);
     auto identical_function = factory.create("ident", { });
     ASSERT_EQ(factory.size(), 1);
@@ -63,7 +65,8 @@ TEST(Functions_test, identical_function_test) {
 }
 
 TEST(Functions_test, exponential_function_test) {
-    auto factory = FunctionFactory();
+    auto &factory = FunctionFactory::get();
+    factory.clear();
     ASSERT_EQ(factory.size(), 0);
     auto exponential_function = factory.create("exp", { 2 });
     ASSERT_EQ(factory.size(), 1);
@@ -85,7 +88,8 @@ TEST(Functions_test, exponential_function_test) {
 }
 
 TEST(Functions_test, power_function_test) {
-    auto factory = FunctionFactory();
+    auto &factory = FunctionFactory::get();
+    factory.clear();
     ASSERT_EQ(factory.size(), 0);
     auto power_function = factory.create("power", { 2 });
     ASSERT_EQ(factory.size(), 1);
@@ -109,7 +113,8 @@ TEST(Functions_test, power_function_test) {
 }
 
 TEST(Functions_test, polynomial_function_test) {
-    auto factory = FunctionFactory();
+    auto &factory = FunctionFactory::get();
+    factory.clear();
     ASSERT_EQ(factory.size(), 0);
     auto polynomial_function = factory.create("polynomial", { 1, 2, 3, 4, 5 });
     ASSERT_EQ(factory.size(), 1);
@@ -129,7 +134,8 @@ TEST(Functions_test, polynomial_function_test) {
 }
 
 TEST(Functions_test, factory_test) {
-    auto factory = FunctionFactory();
+    auto &factory = FunctionFactory::get();
+    factory.clear();
     ASSERT_EQ(factory.size(), 0);
     ASSERT_THROW(factory.create("not_a_function_at_all", {}), std::logic_error);
 }

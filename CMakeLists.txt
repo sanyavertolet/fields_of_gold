@@ -17,8 +17,11 @@ set(IdenticalFunction src/Functions/IdenticalFunction/IdenticalFunction.h src/Fu
 set(PowerFunction src/Functions/PowerFunction/PowerFunction.h src/Functions/PowerFunction/PowerFunction.cpp)
 set(ExponentialFunction src/Functions/ExponentialFunction/ExponentialFunction.h src/Functions/ExponentialFunction/ExponentialFunction.cpp)
 set(PolynomialFunction src/Functions/PolynomialFunction/PolynomialFunction.h src/Functions/PolynomialFunction/PolynomialFunction.cpp)
+set(CompositionFunction src/Functions/CompositionFunction/CompositionFunction.h src/Functions/CompositionFunction/CompositionFunction.cpp)
 
-set(Functions ${AbstractFunction} ${ConstantFunction} ${IdenticalFunction} ${PowerFunction} ${ExponentialFunction} ${PolynomialFunction})
+set(operators src/Functions/Operators/operators.h src/Functions/Operators/operators.cpp)
+
+set(Functions ${AbstractFunction} ${ConstantFunction} ${IdenticalFunction} ${PowerFunction} ${ExponentialFunction} ${PolynomialFunction} ${CompositionFunction} ${operators})
 
 set(Factory src/Factory/FunctionFactory.h src/Factory/FunctionFactory.cpp)
 
@@ -27,7 +30,7 @@ add_library(fields_of_gold_lib ${Functions} ${Factory})
 add_executable(fields_of_gold main.cpp)
 target_link_libraries(fields_of_gold fields_of_gold_lib)
 
-add_executable(tests test/Functions_test.cpp)
+add_executable(tests test/Functions_test.cpp test/Operators_test.cpp)
 target_link_libraries(tests fields_of_gold_lib)
 target_link_libraries(tests gtest_main)
 add_test(NAME tests COMMAND tests)
